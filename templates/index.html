@@ -2,12 +2,13 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <title>To Do List sample app</title>
+    <meta charset="UTF-8">
+    <title>To Do List sample app</title>
 </head>
 
 <body>
-  <h1>ToDo List</h1>
+<h1>ToDo List</h1>
+<p>TIME is {{ dt }}</p>
 {#  {% if not todolist %}#}
 {#    <p>you can register something to do.</p>#}
 {#  {% else %}#}
@@ -23,13 +24,14 @@
 {#    {% endfor %}#}
 {#  </ul>#}
 
-  <form action="/additem" method="post" name="myform">
+<form action="/additem" method="post" name="myform">
     <p>
-      <input type="text" name="title">
+        <input type="text" name="contents" placeholder="{{ information }}">
     </p>
     <a href="javascript:document.myform.submit()" class="button">submit</a>
-{#    <a href="/deletealldoneitems" class="button">delete all done items</a>#}
-  </form>
+    {#    <a href="/deletealldoneitems" class="button">delete all done items</a>#}
+</form>
+<p>入力データは {{ contents }} です。</p>
 </body>
 
 </html>
