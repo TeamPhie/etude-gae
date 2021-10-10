@@ -5,11 +5,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
 def hello():
-    if request.method == "GET":
-        return "This is GET method!"
-    if request.method == "POST":
-        user_id = request.get_json()["user_id"]
-        return f'User ID: {user_id}'
+    return
 
 
 if __name__ == '__main__':
