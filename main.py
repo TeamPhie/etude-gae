@@ -1,11 +1,12 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=["GET"])
 def hello():
-    return
+    information = 0
+    return render_template("index.html", information=information)
 
 
 if __name__ == '__main__':
