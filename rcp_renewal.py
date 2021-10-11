@@ -12,6 +12,5 @@ elif player == "Par":
     player_number = 2
 else:
     print("Goo or Chii , Par plese...")
-
 rcp_list = [player, computer]
 
