@@ -19,7 +19,7 @@ def add_item():
     contents = request.form["contents"]
     global_list.append(contents)
     dt = datetime.now()
-    dt_list.append(dt)
+    dt_list.append(dt)a
     return render_template("index.html", global_list=global_list, dt_list=dt_list)
 
 
