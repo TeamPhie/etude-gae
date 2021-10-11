@@ -3,6 +3,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+global_list = []
+dt_list = []
 
 @app.route('/', methods=["GET"])
 def hello():
@@ -13,9 +15,12 @@ def hello():
 
 @app.route('/additem', methods=["GET", "POST"])
 def add_item():
-    print(f"Form data: {dict(request.form)}")
+    # print(f"Form data: {dict(request.form)}")
     contents = request.form["contents"]
-    return render_template("index.html", contents=contents)
+    global_list.append(contents)
+    dt = datetime.now()
+    dt_list.append(dt)
+    return render_template("index.html", global_list=global_list, dt_list=dt_list)
 
 
 if __name__ == '__main__':

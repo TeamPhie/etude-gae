@@ -30,8 +30,28 @@
     </p>
     <a href="javascript:document.myform.submit()" class="button">submit</a>
     {#    <a href="/deletealldoneitems" class="button">delete all done items</a>#}
+    <table border="1">
+        <tr>
+            <th>やること</th>
+            <th>時間</th>
+        </tr>
+        {% for gyou in %}
+        <tr>
+            {% for item in global_list %}
+            <th>入力データは {{ item }} です。</th>
+            {% endfor %}
+            {% for dt in dt_list %}
+            <th>{{ dt }}</th>
+            {% endfor %}
+        </tr>
+    </table>
+    {% for item in global_list %}
+    <div>入力データは {{ item }} です。</div>
+    {% endfor %}
+    {% for dt in dt_list %}
+    <div>{{ dt }}</div>
+    {% endfor %}
 </form>
-<p>入力データは {{ contents }} です。</p>
 </body>
 
 </html>
