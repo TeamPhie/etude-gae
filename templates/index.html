@@ -16,11 +16,23 @@
     </p>
     <a href="javascript:document.myform.submit()" class="button">submit</a>
 </form>
-<ol type="a">
-    {% for animal in animals %}
-        <li>{{ animal.name }}</li>
+<table border="1">
+    <tr>
+        <th>項目</th>
+        <th>やること</th>
+    </tr>
+    {% for content in contents %}
+    <tr>
+        <th>{{ content.id }}</th>
+        <th>{{ content.contents}}</th>
+    </tr>
     {% endfor %}
-</ol>
+</table>
+<!--<ol type="a">-->
+<!--    {% for animal in animals %}-->
+<!--        <li>{{ animal.name }}</li>-->
+<!--    {% endfor %}-->
+<!--</ol>-->
 </body>
 
 </html>

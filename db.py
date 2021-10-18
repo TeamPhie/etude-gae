@@ -34,38 +34,18 @@ class Animal(Base):
     name = Column(String(30), nullable=False)
 
 
-Base.metadata.create_all(engine)
+class ToDo(Base):
+    __tablename__ = 'todo'
+    __table_args__ = (
+        {
+            "mysql_charset": "utf8mb4"
+        }
+    )
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    contents = Column(String(30), nullable=False)
 
-Session = sessionmaker(engine)
-session = Session()
 
 # テーブルを作成する
 Base.metadata.create_all(engine)
 
-# セッションを作成する
 Session = sessionmaker(engine)
-session = Session()
-
-# # データを追加する
-# cat = Animal(name='cat')
-# dog = Animal(name='dog')
-# session.add(cat)
-# session.add(dog)
-# session.commit()
-#
-# cat = session.query(Animal).get(1)
-# cat.name = 'pengin'
-# session.commit()
-
-animals = session.query(Animal).all()
-for animal in animals:
-    print(f"id={animal.id}, name={animal.name}")
-
-session.commit()
-
-# データを取得する
-animals = session.query(
-    Animal
-).filter(
-    Animal.name == "cat"
-).count()

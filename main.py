@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from datetime import datetime
-from db import Session, Animal
+from db import Session, ToDo
 
 app = Flask(__name__)
 
@@ -12,22 +12,20 @@ dt_list = []
 def hello():
     information = "TODOを入力"
     dt = datetime.now()
-    session = Session()
-    animals = session.query(Animal).all()
-    # print(animals)
-    # for animal in animals:
-    #     print(f"id={animal.id}, name={animal.name}")
-    return render_template("index.html", information=information, dt=dt, animals=animals)
+    return render_template("index.html", information=information, dt=dt)
 
 
 @app.route('/additem', methods=["GET", "POST"])
 def add_item():
-    # print(f"Form data: {dict(request.form)}")
-    contents = request.form["contents"]
-    global_list.append(contents)
+    session = Session()
+    posted_form = request.form["contents"]
+    todo = ToDo(contents=posted_form)
+    session.add(todo)
+    session.commit()
+    contents = session.query(ToDo).all()
     dt = datetime.now()
     dt_list.append(dt)
-    return render_template("index.html", global_list=global_list, dt_list=dt_list)
+    return render_template("index.html", global_list=global_list, dt_list=dt_list, contents=contents)
 
 
 if __name__ == '__main__':
