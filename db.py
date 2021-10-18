@@ -46,17 +46,16 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(engine)
 session = Session()
 
-# データを追加する
-cat = Animal(name='cat')
-dog = Animal(name='dog')
-session.add(cat)
-session.add(dog)
-
-session.commit()
-
-cat = session.query(Animal).get(1)
-cat.name = 'pengin'
-session.commit()
+# # データを追加する
+# cat = Animal(name='cat')
+# dog = Animal(name='dog')
+# session.add(cat)
+# session.add(dog)
+# session.commit()
+#
+# cat = session.query(Animal).get(1)
+# cat.name = 'pengin'
+# session.commit()
 
 animals = session.query(Animal).all()
 for animal in animals:
