@@ -6,6 +6,7 @@ app = Flask(__name__)
 global_list = []
 dt_list = []
 
+
 @app.route('/', methods=["GET"])
 def hello():
     information = "TODOを入力"

@@ -1,7 +1,7 @@
 import random
 
 player = input()
-computer = random.randint(0,2)
+computer = random.randint(0, 2)
 
 if player == "Goo":
     player_number = 0
@@ -29,4 +29,3 @@ elif player == "Par":
         print("aikoでしょ")
 else:
     print("Goo or Chii , Par plese...")
-
