@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from datetime import datetime
+from db import Session, Animal
 
 app = Flask(__name__)
 
@@ -11,7 +12,12 @@ dt_list = []
 def hello():
     information = "TODOを入力"
     dt = datetime.now()
-    return render_template("index.html", information=information, dt=dt)
+    session = Session()
+    animals = session.query(Animal).all()
+    # print(animals)
+    # for animal in animals:
+    #     print(f"id={animal.id}, name={animal.name}")
+    return render_template("index.html", information=information, dt=dt, animals=animals)
 
 
 @app.route('/additem', methods=["GET", "POST"])

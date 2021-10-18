@@ -16,6 +16,11 @@
     </p>
     <a href="javascript:document.myform.submit()" class="button">submit</a>
 </form>
+<ol type="a">
+    {% for animal in animals %}
+        <li>{{ animal.name }}</li>
+    {% endfor %}
+</ol>
 </body>
 
 </html>
