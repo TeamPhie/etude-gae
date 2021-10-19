@@ -12,22 +12,39 @@
 
 <form action="/additem" method="post" name="myform">
     <p>
-        <input type="text" name="contents" placeholder="{{ information }}">
+        <input type="text" name="contents" placeholder="うんこ">
     </p>
     <a href="javascript:document.myform.submit()" class="button">submit</a>
+    <table border="1">
+        <tr>
+            <th>項目</th>
+            <th>やること</th>
+            <th>削除</th>
+        </tr>
+        {% for content in contents %}
+        <tr>
+            <th>{{ content.id }}</th>
+            <th>{{ content.contents}}</th>
+            <th><a href="javascript:document.myform.submit()" class="button">削除</a></th>
+        </tr>
+        {% endfor %}
+    </table>
+
 </form>
-<table border="1">
-    <tr>
-        <th>項目</th>
-        <th>やること</th>
-    </tr>
-    {% for content in contents %}
-    <tr>
-        <th>{{ content.id }}</th>
-        <th>{{ content.contents}}</th>
-    </tr>
-    {% endfor %}
-</table>
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>項目</th>-->
+<!--        <th>やること</th>-->
+<!--        <th>削除</th>-->
+<!--    </tr>-->
+<!--    {% for content in contents %}-->
+<!--    <tr>-->
+<!--        <th>{{ content.id }}</th>-->
+<!--        <th>{{ content.contents}}</th>-->
+<!--        <th><a href="javascript:document.myform.submit()" class="button">削除</a></th>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--</table>-->
 <!--<ol type="a">-->
 <!--    {% for animal in animals %}-->
 <!--        <li>{{ animal.name }}</li>-->

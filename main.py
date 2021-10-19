@@ -19,10 +19,15 @@ def hello():
 def add_item():
     session = Session()
     posted_form = request.form["contents"]
+
     todo = ToDo(contents=posted_form)
     session.add(todo)
     session.commit()
     contents = session.query(ToDo).all()
+
+    # delete_id=request.form["id"]
+    # delete_botton=session.query(ToDo).filter(ToDo.contents)
+
     dt = datetime.now()
     dt_list.append(dt)
     return render_template("index.html", global_list=global_list, dt_list=dt_list, contents=contents)
