@@ -45,6 +45,18 @@ class ToDo(Base):
     contents = Column(String(30), nullable=False)
 
 
+class Authentication(Base):
+    __tablename__ = 'authentication'
+    __table_args__ = (
+        {
+            "mysql_charset": "utf8mb4"
+        }
+    )
+    user_number = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(String(30), nullable=False)
+    password = Column(String(30), nullable=False)
+
+
 # テーブルを作成する
 Base.metadata.create_all(engine)
 
